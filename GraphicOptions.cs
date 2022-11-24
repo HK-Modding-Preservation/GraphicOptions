@@ -202,7 +202,7 @@ public class GraphicOptions : GlobalSettingsMod<GraphicOptionsSettings>, ICustom
                         1 => true,
                         _ => false
                     };
-                    SetCameraStuff();
+                    SetBlur( UScenes.SceneManager.GetActiveScene() );
                 },
                 () =>
                 {
