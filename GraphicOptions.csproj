@@ -1,9 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <RootNamespace>EffectToggle</RootNamespace>
+    <RootNamespace>GraphicOptions</RootNamespace>
+    <AssemblyName>GraphicOptions</AssemblyName>
     <TargetFramework>net472</TargetFramework>
-    <AssemblyTitle>EffectToggle</AssemblyTitle>
-    <Product>EffectToggle</Product>
+    <AssemblyTitle>GraphicOptions</AssemblyTitle>
+    <Product>GraphicOptions</Product>
     <Description>A Hollow Knight Mod</Description>
     <Copyright>Copyright © SFGrenade 2019-2021</Copyright>
     <AssemblyVersion>1.5.0.0</AssemblyVersion>
