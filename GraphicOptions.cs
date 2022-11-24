@@ -174,217 +174,56 @@ public class GraphicOptions : GlobalSettingsMod<GraphicOptionsSettings>, ICustom
             new TextPanel("Camera Options"),
             new HorizontalOption("Bloom",
                 "Enables or disables bloom.",
-                new[] { "Off", "On" }, (option) =>
-                {
-                    GlobalSettings.CameraBloomEnabled = option switch
-                    {
-                        0 => false,
-                        1 => true,
-                        _ => false
-                    };
-                    SetCameraStuff();
-                },
-                () =>
-                {
-                    return GlobalSettings.CameraBloomEnabled switch
-                    {
-                        false => 0,
-                        true => 1
-                    };
-                }),
+                new[] { "Off", "On" },
+                SetCameraBloomEnabled,
+                GetCameraBloomEnabled),
             new HorizontalOption("Blur",
                 "Enables or disables the blur effect of the background.",
-                new[] { "Off", "On" }, (option) =>
-                {
-                    GlobalSettings.CameraBlurEnabled = option switch
-                    {
-                        0 => false,
-                        1 => true,
-                        _ => false
-                    };
-                    SetBlur( UScenes.SceneManager.GetActiveScene() );
-                },
-                () =>
-                {
-                    return GlobalSettings.CameraBlurEnabled switch
-                    {
-                        false => 0,
-                        true => 1
-                    };
-                }),
+                new[] { "Off", "On" },
+                SetCameraBlurEnabled,
+                GetCameraBlurEnabled),
             new HorizontalOption("Dynamic Resolution",
                 "Enables or disables dynamic resolution scaling.",
-                new[] { "Off", "On" }, (option) =>
-                {
-                    GlobalSettings.CameraDynamicResolutionAllowed = option switch
-                    {
-                        0 => false,
-                        1 => true,
-                        _ => false
-                    };
-                    SetCameraStuff();
-                },
-                () =>
-                {
-                    return GlobalSettings.CameraDynamicResolutionAllowed switch
-                    {
-                        false => 0,
-                        true => 1
-                    };
-                }),
+                new[] { "Off", "On" },
+                SetCameraDynamicResolutionAllowed,
+                GetCameraDynamicResolutionAllowed),
             new HorizontalOption("Film Grain",
                 "Enables or disables the film grain effect.",
-                new[] { "Off", "On" }, (option) =>
-                {
-                    GlobalSettings.CameraFilmGrainEnabled = option switch
-                    {
-                        0 => false,
-                        1 => true,
-                        _ => false
-                    };
-                    SetCameraStuff();
-                },
-                () =>
-                {
-                    return GlobalSettings.CameraFilmGrainEnabled switch
-                    {
-                        false => 0,
-                        true => 1
-                    };
-                }),
+                new[] { "Off", "On" },
+                SetCameraFilmGrainEnabled,
+                GetCameraFilmGrainEnabled),
             new HorizontalOption("Allow HDR",
                 "Enables or disables high dynamic range rendering.",
-                new[] { "Off", "On" }, (option) =>
-                {
-                    GlobalSettings.CameraHdrEnabled = option switch
-                    {
-                        0 => false,
-                        1 => true,
-                        _ => false
-                    };
-                    SetCameraStuff();
-                },
-                () =>
-                {
-                    return GlobalSettings.CameraHdrEnabled switch
-                    {
-                        false => 0,
-                        true => 1
-                    };
-                }),
+                new[] { "Off", "On" },
+                SetCameraHdrEnabled,
+                GetCameraHdrEnabled),
             new HorizontalOption("Allow MSAA",
                 "Enables or disables MSAA rendering.",
-                new[] { "Off", "On" }, (option) =>
-                {
-                    GlobalSettings.CameraMsaaAllowed = option switch
-                    {
-                        0 => false,
-                        1 => true,
-                        _ => false
-                    };
-                    SetCameraStuff();
-                },
-                () =>
-                {
-                    return GlobalSettings.CameraMsaaAllowed switch
-                    {
-                        false => 0,
-                        true => 1
-                    };
-                }),
+                new[] { "Off", "On" },
+                SetCameraMsaaAllowed,
+                GetCameraMsaaAllowed),
             new HorizontalOption("Occlusion Culling",
                 "Whether or not the Camera will use occlusion culling during rendering.",
-                new[] { "Off", "On" }, (option) =>
-                {
-                    GlobalSettings.CameraUseOcclusionCulling = option switch
-                    {
-                        0 => false,
-                        1 => true,
-                        _ => false
-                    };
-                    SetCameraStuff();
-                },
-                () =>
-                {
-                    return GlobalSettings.CameraUseOcclusionCulling switch
-                    {
-                        false => 0,
-                        true => 1
-                    };
-                }),
+                new[] { "Off", "On" },
+                SetCameraUseOcclusionCulling,
+                GetCameraUseOcclusionCulling),
             new HorizontalOption("Physical Properties",
                 "Enable to use physical camera properties to compute the field of view and the frustum.",
-                new[] { "Off", "On" }, (option) =>
-                {
-                    GlobalSettings.CameraUsePhysicalProperties = option switch
-                    {
-                        0 => false,
-                        1 => true,
-                        _ => false
-                    };
-                    SetCameraStuff();
-                },
-                () =>
-                {
-                    return GlobalSettings.CameraUsePhysicalProperties switch
-                    {
-                        false => 0,
-                        true => 1
-                    };
-                }),
+                new[] { "Off", "On" },
+                SetCameraUsePhysicalProperties,
+                GetCameraUsePhysicalProperties),
 
             new TextPanel("Quality Options"),
             new HorizontalOption("Anisotropic Filtering ",
                 "Global anisotropic filtering mode.",
-                new[] { "Off", "On", "Force On" }, (option) =>
-                {
-                    GlobalSettings.QualityAnisotropicFiltering = option switch
-                    {
-                        0 => AnisotropicFiltering.Disable,
-                        1 => AnisotropicFiltering.Enable,
-                        2 => AnisotropicFiltering.ForceEnable,
-                        _ => AnisotropicFiltering.Disable
-                    };
-                    SetQualityStuff();
-                },
-                () =>
-                {
-                    return GlobalSettings.QualityAnisotropicFiltering switch
-                    {
-                        AnisotropicFiltering.Disable => 0,
-                        AnisotropicFiltering.Enable => 1,
-                        AnisotropicFiltering.ForceEnable => 2,
-                        _ => 0
-                    };
-                }),
+                new[] { "Off", "On", "Force On" },
+                SetQualityAnisotropicFiltering,
+                GetQualityAnisotropicFiltering),
             new HorizontalOption("Anti Aliasing ",
                 "Choose the level of Multi-Sample Anti-aliasing (MSAA) that the GPU performs.",
-                new[]
-                {
-                    "Off", "2x MSAA", "4x MSAA", "8x MSAA"
-                }, (option) =>
-                {
-                    GlobalSettings.QualityAntiAliasing = option switch
-                    {
-                        0 => 0,
-                        1 => 2,
-                        2 => 4,
-                        3 => 8,
-                        _ => GlobalSettings.QualityAntiAliasing
-                    };
-                    SetQualityStuff();
-                },
-                () =>
-                {
-                    return GlobalSettings.QualityAntiAliasing switch
-                    {
-                        0 => 0,
-                        2 => 1,
-                        4 => 2,
-                        8 => 3,
-                        _ => 0
-                    };
-                }),
+                new[] { "Off", "2x MSAA", "4x MSAA", "8x MSAA" },
+                SetQualityAntiAliasing,
+                GetQualityAntiAliasing),
             new CustomSlider("Async Upload Buffer Size",
                 (option) =>
                 {
@@ -394,24 +233,9 @@ public class GraphicOptions : GlobalSettingsMod<GraphicOptionsSettings>, ICustom
                 () => GlobalSettings.QualityAsyncUploadBufferSize, 2f, 512f, true),
             new HorizontalOption("Async Upload Persist",
                 "Make ring buffer allocation persist after all upload operations have completed. Increases memory usage.",
-                new[] { "Off", "On" }, (option) =>
-                {
-                    GlobalSettings.QualityAsyncUploadPersistentBuffer = option switch
-                    {
-                        0 => false,
-                        1 => true,
-                        _ => false
-                    };
-                    SetQualityStuff();
-                },
-                () =>
-                {
-                    return GlobalSettings.QualityAsyncUploadPersistentBuffer switch
-                    {
-                        false => 0,
-                        true => 1
-                    };
-                }),
+                new[] { "Off", "On" },
+                SetQualityAsyncUploadPersistentBuffer,
+                GetQualityAsyncUploadPersistentBuffer),
             new CustomSlider("Async Upload Time Slice",
                 (option) =>
                 {
@@ -421,24 +245,9 @@ public class GraphicOptions : GlobalSettingsMod<GraphicOptionsSettings>, ICustom
                 () => GlobalSettings.QualityAsyncUploadTimeSlice, 1f, 33f, true),
             new HorizontalOption("Billboards Face Camera",
                 "If enabled, billboards will face towards camera position rather than camera orientation.",
-                new[] { "Off", "On" }, (option) =>
-                {
-                    GlobalSettings.QualityBillboardsFaceCameraPosition = option switch
-                    {
-                        0 => false,
-                        1 => true,
-                        _ => false
-                    };
-                    SetQualityStuff();
-                },
-                () =>
-                {
-                    return GlobalSettings.QualityBillboardsFaceCameraPosition switch
-                    {
-                        false => 0,
-                        true => 1
-                    };
-                }),
+                new[] { "Off", "On" },
+                SetQualityBillboardsFaceCameraPosition,
+                GetQualityBillboardsFaceCameraPosition),
             new CustomSlider("LOD Bias",
                 (option) =>
                 {
@@ -469,24 +278,9 @@ public class GraphicOptions : GlobalSettingsMod<GraphicOptionsSettings>, ICustom
                 () => GlobalSettings.QualityPixelLightCount, 0f, 100f, true),
             new HorizontalOption("Realtime Reflection Probes",
                 "Enables real-time reflection probes.",
-                new[] { "Off", "On" }, (option) =>
-                {
-                    GlobalSettings.QualityRealtimeReflectionProbes = option switch
-                    {
-                        0 => false,
-                        1 => true,
-                        _ => false
-                    };
-                    SetQualityStuff();
-                },
-                () =>
-                {
-                    return GlobalSettings.QualityRealtimeReflectionProbes switch
-                    {
-                        false => 0,
-                        true => 1
-                    };
-                }),
+                new[] { "Off", "On" },
+                SetQualityRealtimeReflectionProbes,
+                GetQualityRealtimeReflectionProbes),
             new CustomSlider("Resolution Scaling",
                 (option) =>
                 {
@@ -542,22 +336,8 @@ public class GraphicOptions : GlobalSettingsMod<GraphicOptionsSettings>, ICustom
             new HorizontalOption("Shadowmask Mode",
                 "The rendering mode of Shadowmask.",
                 new[] { "Normal", "Distance" },
-                (option) =>
-                {
-                    GlobalSettings.QualityShadowmaskMode = option switch
-                    {
-                        0 => ShadowmaskMode.Shadowmask,
-                        1 => ShadowmaskMode.DistanceShadowmask,
-                        _ => ShadowmaskMode.Shadowmask
-                    };
-                    SetQualityStuff();
-                },
-                () => GlobalSettings.QualityShadowmaskMode switch
-                {
-                    ShadowmaskMode.Shadowmask => 0,
-                    ShadowmaskMode.DistanceShadowmask => 1,
-                    _ => 0
-                }),
+                SetQualityShadowmaskMode,
+                GetQualityShadowmaskMode),
             new CustomSlider("Shadow Near Limit",
                 (option) =>
                 {
@@ -568,169 +348,43 @@ public class GraphicOptions : GlobalSettingsMod<GraphicOptionsSettings>, ICustom
             new HorizontalOption("Shadow Projection",
                 "Directional light shadow projection.",
                 new[] { "Close", "Stable" },
-                (option) =>
-                {
-                    GlobalSettings.QualityShadowProjection = option switch
-                    {
-                        0 => ShadowProjection.CloseFit,
-                        1 => ShadowProjection.StableFit,
-                        _ => ShadowProjection.CloseFit
-                    };
-                    SetQualityStuff();
-                },
-                () => GlobalSettings.QualityShadowProjection switch
-                {
-                    ShadowProjection.CloseFit => 0,
-                    ShadowProjection.StableFit => 1,
-                    _ => 0
-                }),
+                SetQualityShadowProjection,
+                GetQualityShadowProjection),
             new HorizontalOption("Shadow Resolution",
                 "The default resolution of the shadow maps.",
                 new[] { "Low", "Medium", "High", "Very High" },
-                (option) =>
-                {
-                    GlobalSettings.QualityShadowResolution = option switch
-                    {
-                        0 => ShadowResolution.Low,
-                        1 => ShadowResolution.Medium,
-                        2 => ShadowResolution.High,
-                        3 => ShadowResolution.VeryHigh,
-                        _ => ShadowResolution.Low
-                    };
-                    SetQualityStuff();
-                },
-                () => GlobalSettings.QualityShadowResolution switch
-                {
-                    ShadowResolution.Low => 0,
-                    ShadowResolution.Medium => 1,
-                    ShadowResolution.High => 2,
-                    ShadowResolution.VeryHigh => 3,
-                    _ => 0
-                }),
+                SetQualityShadowResolution,
+                GetQualityShadowResolution),
             new HorizontalOption("Shadows",
                 "Real-time Shadows type to be used.",
                 new[] { "Off", "Hard", "All" },
-                (option) =>
-                {
-                    GlobalSettings.QualityShadows = option switch
-                    {
-                        0 => ShadowQuality.Disable,
-                        1 => ShadowQuality.HardOnly,
-                        2 => ShadowQuality.All,
-                        _ => ShadowQuality.Disable
-                    };
-                    SetQualityStuff();
-                },
-                () => GlobalSettings.QualityShadows switch
-                {
-                    ShadowQuality.Disable => 0,
-                    ShadowQuality.HardOnly => 1,
-                    ShadowQuality.All => 2,
-                    _ => 0
-                }),
+                SetQualityShadows,
+                GetQualityShadows),
             new HorizontalOption("Skin Weights",
                 "The maximum number of bones per vertex that are taken into account during skinning.",
                 new[] { "One", "Two", "Four", "Unlimited" },
-                (option) =>
-                {
-                    GlobalSettings.QualitySkinWeights = option switch
-                    {
-                        0 => SkinWeights.OneBone,
-                        1 => SkinWeights.TwoBones,
-                        2 => SkinWeights.FourBones,
-                        3 => SkinWeights.Unlimited,
-                        _ => SkinWeights.OneBone
-                    };
-                    SetQualityStuff();
-                },
-                () => GlobalSettings.QualitySkinWeights switch
-                {
-                    SkinWeights.OneBone => 0,
-                    SkinWeights.TwoBones => 1,
-                    SkinWeights.FourBones => 2,
-                    SkinWeights.Unlimited => 3,
-                    _ => 0
-                }),
+                SetQualitySkinWeights,
+                GetQualitySkinWeights),
             new HorizontalOption("Soft Particles",
                 "Should soft blending be used for particles?",
-                new[] { "Off", "On" }, (option) =>
-                {
-                    GlobalSettings.QualitySoftParticles = option switch
-                    {
-                        0 => false,
-                        1 => true,
-                        _ => false
-                    };
-                    SetQualityStuff();
-                },
-                () =>
-                {
-                    return GlobalSettings.QualitySoftParticles switch
-                    {
-                        false => 0,
-                        true => 1
-                    };
-                }),
+                new[] { "Off", "On" },
+                SetQualitySoftParticles,
+                GetQualitySoftParticles),
             new HorizontalOption("Soft Vegetation",
                 "Use a two-pass shader for the vegetation in the terrain engine.",
-                new[] { "Off", "On" }, (option) =>
-                {
-                    GlobalSettings.QualitySoftVegetation = option switch
-                    {
-                        0 => false,
-                        1 => true,
-                        _ => false
-                    };
-                    SetQualityStuff();
-                },
-                () =>
-                {
-                    return GlobalSettings.QualitySoftVegetation switch
-                    {
-                        false => 0,
-                        true => 1
-                    };
-                }),
+                new[] { "Off", "On" },
+                SetQualitySoftVegetation,
+                GetQualitySoftVegetation),
             new HorizontalOption("Mipmaps Active",
                 "Enable automatic streaming of texture mipmap levels based on their distance from all active cameras.",
-                new[] { "Off", "On" }, (option) =>
-                {
-                    GlobalSettings.QualityStreamingMipmapsActive = option switch
-                    {
-                        0 => false,
-                        1 => true,
-                        _ => false
-                    };
-                    SetQualityStuff();
-                },
-                () =>
-                {
-                    return GlobalSettings.QualityStreamingMipmapsActive switch
-                    {
-                        false => 0,
-                        true => 1
-                    };
-                }),
+                new[] { "Off", "On" },
+                SetQualityStreamingMipmapsActive,
+                GetQualityStreamingMipmapsActive),
             new HorizontalOption("Mipmaps All Cameras",
                 "Process all enabled Cameras for texture streaming.",
-                new[] { "Off", "On" }, (option) =>
-                {
-                    GlobalSettings.QualityStreamingMipmapsAddAllCameras = option switch
-                    {
-                        0 => false,
-                        1 => true,
-                        _ => false
-                    };
-                    SetQualityStuff();
-                },
-                () =>
-                {
-                    return GlobalSettings.QualityStreamingMipmapsAddAllCameras switch
-                    {
-                        false => 0,
-                        true => 1
-                    };
-                }),
+                new[] { "Off", "On" },
+                SetQualityStreamingMipmapsAddAllCameras,
+                GetQualityStreamingMipmapsAddAllCameras),
             new CustomSlider("Mipmaps Max IO",
                 (option) =>
                 {
@@ -761,31 +415,9 @@ public class GraphicOptions : GlobalSettingsMod<GraphicOptionsSettings>, ICustom
                 () => GlobalSettings.QualityStreamingMipmapsRenderersPerFrame, 0f, 4096f, true),
             new HorizontalOption("VSync",
                 "The number of vertical syncs that should pass between each frame.",
-                new[] { "Off", "Refresh Rate", "Half Refresh Rate", "Third Refresh Rate", "Quarter Refresh Rate" }, (option) =>
-                {
-                    GlobalSettings.QualityVSyncCount = option switch
-                    {
-                        0 => 0,
-                        1 => 1,
-                        2 => 2,
-                        3 => 3,
-                        4 => 4,
-                        _ => 0
-                    };
-                    SetQualityStuff();
-                },
-                () =>
-                {
-                    return GlobalSettings.QualityVSyncCount switch
-                    {
-                        0 => 0,
-                        1 => 1,
-                        2 => 2,
-                        3 => 3,
-                        4 => 4,
-                        _ => 0
-                    };
-                }),
+                new[] { "Off", "Refresh Rate", "Half Refresh Rate", "Third Refresh Rate", "Quarter Refresh Rate" },
+                SetQualityVSyncCount,
+                GetQualityVSyncCount),
         });
     }
 
@@ -795,4 +427,382 @@ public class GraphicOptions : GlobalSettingsMod<GraphicOptionsSettings>, ICustom
 
         return MenuRef.GetMenuScreen(modListMenu);
     }
+
+    #region Setters and Getters
+
+    private void SetCameraBloomEnabled(int option)
+    {
+        GlobalSettings.CameraBloomEnabled = IntToBool(option);
+        SetCameraStuff();
+    }
+
+    private int GetCameraBloomEnabled()
+    {
+        return BoolToInt(GlobalSettings.CameraBloomEnabled);
+    }
+
+    private void SetCameraBlurEnabled(int option)
+    {
+        GlobalSettings.CameraBlurEnabled = IntToBool(option);
+        SetBlur(UScenes.SceneManager.GetActiveScene());
+    }
+
+    private int GetCameraBlurEnabled()
+    {
+        return BoolToInt(GlobalSettings.CameraBlurEnabled);
+    }
+
+    private void SetCameraDynamicResolutionAllowed(int option)
+    {
+        GlobalSettings.CameraDynamicResolutionAllowed = IntToBool(option);
+        SetCameraStuff();
+    }
+
+    private int GetCameraDynamicResolutionAllowed()
+    {
+        return BoolToInt(GlobalSettings.CameraDynamicResolutionAllowed);
+    }
+
+    private void SetCameraFilmGrainEnabled(int option)
+    {
+        GlobalSettings.CameraFilmGrainEnabled = IntToBool(option);
+        SetCameraStuff();
+    }
+
+    private int GetCameraFilmGrainEnabled()
+    {
+        return BoolToInt(GlobalSettings.CameraFilmGrainEnabled);
+    }
+
+    private void SetCameraHdrEnabled(int option)
+    {
+        GlobalSettings.CameraHdrEnabled = IntToBool(option);
+        SetCameraStuff();
+    }
+
+    private int GetCameraHdrEnabled()
+    {
+        return BoolToInt(GlobalSettings.CameraHdrEnabled);
+    }
+
+    private void SetCameraMsaaAllowed(int option)
+    {
+        GlobalSettings.CameraMsaaAllowed = IntToBool(option);
+        SetCameraStuff();
+    }
+
+    private int GetCameraMsaaAllowed()
+    {
+        return BoolToInt(GlobalSettings.CameraMsaaAllowed);
+    }
+
+    private void SetCameraUseOcclusionCulling(int option)
+    {
+        GlobalSettings.CameraUseOcclusionCulling = IntToBool(option);
+        SetCameraStuff();
+    }
+
+    private int GetCameraUseOcclusionCulling()
+    {
+        return BoolToInt(GlobalSettings.CameraUseOcclusionCulling);
+    }
+
+    private void SetCameraUsePhysicalProperties(int option)
+    {
+        GlobalSettings.CameraUsePhysicalProperties = IntToBool(option);
+        SetCameraStuff();
+    }
+
+    private int GetCameraUsePhysicalProperties()
+    {
+        return BoolToInt(GlobalSettings.CameraUsePhysicalProperties);
+    }
+
+    private void SetQualityAnisotropicFiltering(int option)
+    {
+        GlobalSettings.QualityAnisotropicFiltering = option switch
+        {
+            0 => AnisotropicFiltering.Disable,
+            1 => AnisotropicFiltering.Enable,
+            2 => AnisotropicFiltering.ForceEnable,
+            _ => AnisotropicFiltering.Disable
+        };
+        SetQualityStuff();
+    }
+
+    private int GetQualityAnisotropicFiltering()
+    {
+        return GlobalSettings.QualityAnisotropicFiltering switch
+        {
+            AnisotropicFiltering.Disable => 0,
+            AnisotropicFiltering.Enable => 1,
+            AnisotropicFiltering.ForceEnable => 2,
+            _ => 0
+        };
+    }
+
+    private void SetQualityAntiAliasing(int option)
+    {
+        GlobalSettings.QualityAntiAliasing = option switch
+        {
+            0 => 0,
+            1 => 2,
+            2 => 4,
+            3 => 8,
+            _ => 0
+        };
+        SetQualityStuff();
+    }
+
+    private int GetQualityAntiAliasing()
+    {
+        return GlobalSettings.QualityAntiAliasing switch
+        {
+            0 => 0,
+            2 => 1,
+            4 => 2,
+            8 => 3,
+            _ => 0
+        };
+    }
+
+    private void SetQualityAsyncUploadPersistentBuffer(int option)
+    {
+        GlobalSettings.QualityAsyncUploadPersistentBuffer = IntToBool(option);
+        SetQualityStuff();
+    }
+
+    private int GetQualityAsyncUploadPersistentBuffer()
+    {
+        return BoolToInt(GlobalSettings.QualityAsyncUploadPersistentBuffer);
+    }
+
+    private void SetQualityBillboardsFaceCameraPosition(int option)
+    {
+        GlobalSettings.QualityBillboardsFaceCameraPosition = IntToBool(option);
+        SetQualityStuff();
+    }
+
+    private int GetQualityBillboardsFaceCameraPosition()
+    {
+        return BoolToInt(GlobalSettings.QualityBillboardsFaceCameraPosition);
+    }
+
+    private void SetQualityRealtimeReflectionProbes(int option)
+    {
+        GlobalSettings.QualityRealtimeReflectionProbes = IntToBool(option);
+        SetQualityStuff();
+    }
+
+    private int GetQualityRealtimeReflectionProbes()
+    {
+        return BoolToInt(GlobalSettings.QualityRealtimeReflectionProbes);
+    }
+
+    private void SetQualityShadowmaskMode(int option)
+    {
+        GlobalSettings.QualityShadowmaskMode = option switch
+        {
+            0 => ShadowmaskMode.Shadowmask,
+            1 => ShadowmaskMode.DistanceShadowmask,
+            _ => ShadowmaskMode.Shadowmask
+        };
+        SetQualityStuff();
+    }
+
+    private int GetQualityShadowmaskMode()
+    {
+        return GlobalSettings.QualityShadowmaskMode switch
+        {
+            ShadowmaskMode.Shadowmask => 0,
+            ShadowmaskMode.DistanceShadowmask => 1,
+            _ => 0
+        };
+    }
+
+    private void SetQualityShadowProjection(int option)
+    {
+        GlobalSettings.QualityShadowProjection = option switch
+        {
+            0 => ShadowProjection.CloseFit,
+            1 => ShadowProjection.StableFit,
+            _ => ShadowProjection.CloseFit
+        };
+        SetQualityStuff();
+    }
+
+    private int GetQualityShadowProjection()
+    {
+        return GlobalSettings.QualityShadowProjection switch
+        {
+            ShadowProjection.CloseFit => 0,
+            ShadowProjection.StableFit => 1,
+            _ => 0
+        };
+    }
+
+    private void SetQualityShadowResolution(int option)
+    {
+        GlobalSettings.QualityShadowResolution = option switch
+        {
+            0 => ShadowResolution.Low,
+            1 => ShadowResolution.Medium,
+            2 => ShadowResolution.High,
+            3 => ShadowResolution.VeryHigh,
+            _ => ShadowResolution.Low
+        };
+        SetQualityStuff();
+    }
+
+    private int GetQualityShadowResolution()
+    {
+        return GlobalSettings.QualityShadowResolution switch
+        {
+            ShadowResolution.Low => 0,
+            ShadowResolution.Medium => 1,
+            ShadowResolution.High => 2,
+            ShadowResolution.VeryHigh => 3,
+            _ => 0
+        };
+    }
+
+    private void SetQualityShadows(int option)
+    {
+        GlobalSettings.QualityShadows = option switch
+        {
+            0 => ShadowQuality.Disable,
+            1 => ShadowQuality.HardOnly,
+            2 => ShadowQuality.All,
+            _ => ShadowQuality.Disable
+        };
+        SetQualityStuff();
+    }
+
+    private int GetQualityShadows()
+    {
+        return GlobalSettings.QualityShadows switch
+        {
+            ShadowQuality.Disable => 0,
+            ShadowQuality.HardOnly => 1,
+            ShadowQuality.All => 2,
+            _ => 0
+        };
+    }
+
+    private void SetQualitySkinWeights(int option)
+    {
+        GlobalSettings.QualitySkinWeights = option switch
+        {
+            0 => SkinWeights.OneBone,
+            1 => SkinWeights.TwoBones,
+            2 => SkinWeights.FourBones,
+            3 => SkinWeights.Unlimited,
+            _ => SkinWeights.OneBone
+        };
+        SetQualityStuff();
+    }
+
+    private int GetQualitySkinWeights()
+    {
+        return GlobalSettings.QualitySkinWeights switch
+        {
+            SkinWeights.OneBone => 0,
+            SkinWeights.TwoBones => 1,
+            SkinWeights.FourBones => 2,
+            SkinWeights.Unlimited => 3,
+            _ => 0
+        };
+    }
+
+    private void SetQualitySoftParticles(int option)
+    {
+        GlobalSettings.QualitySoftParticles = IntToBool(option);
+        SetQualityStuff();
+    }
+
+    private int GetQualitySoftParticles()
+    {
+        return BoolToInt(GlobalSettings.QualitySoftParticles);
+    }
+
+    private void SetQualitySoftVegetation(int option)
+    {
+        GlobalSettings.QualitySoftVegetation = IntToBool(option);
+        SetQualityStuff();
+    }
+
+    private int GetQualitySoftVegetation()
+    {
+        return BoolToInt(GlobalSettings.QualitySoftVegetation);
+    }
+
+    private void SetQualityStreamingMipmapsActive(int option)
+    {
+        GlobalSettings.QualityStreamingMipmapsActive = IntToBool(option);
+        SetQualityStuff();
+    }
+
+    private int GetQualityStreamingMipmapsActive()
+    {
+        return BoolToInt(GlobalSettings.QualityStreamingMipmapsActive);
+    }
+
+    private void SetQualityStreamingMipmapsAddAllCameras(int option)
+    {
+        GlobalSettings.QualityStreamingMipmapsAddAllCameras = IntToBool(option);
+        SetQualityStuff();
+    }
+
+    private int GetQualityStreamingMipmapsAddAllCameras()
+    {
+        return BoolToInt(GlobalSettings.QualityStreamingMipmapsAddAllCameras);
+    }
+
+    private void SetQualityVSyncCount(int option)
+    {
+        GlobalSettings.QualityVSyncCount = option switch
+        {
+            0 => 0,
+            1 => 1,
+            2 => 2,
+            3 => 3,
+            4 => 4,
+            _ => 0
+        };
+        SetQualityStuff();
+    }
+
+    private int GetQualityVSyncCount()
+    {
+        return GlobalSettings.QualityVSyncCount switch
+        {
+            0 => 0,
+            1 => 1,
+            2 => 2,
+            3 => 3,
+            4 => 4,
+            _ => 0
+        };
+    }
+
+    private static bool IntToBool(int option)
+    {
+        return option switch
+        {
+            0 => false,
+            1 => true,
+            _ => false
+        };
+    }
+
+    private static int BoolToInt(bool option)
+    {
+        return option switch
+        {
+            false => 0,
+            true => 1
+        };
+    }
+
+    #endregion
 }
