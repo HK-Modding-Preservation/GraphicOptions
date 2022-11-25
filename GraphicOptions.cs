@@ -1,11 +1,10 @@
 ﻿using System;
-using System.CodeDom;
-using System.Collections;
-using System.Collections.Generic;
 using System.Reflection;
+using InControl;
 using Modding;
-using Modding.Menu;
+using Modding.Converters;
 using Modding.Menu.Config;
+using Newtonsoft.Json;
 using SFCore.Generics;
 using SFCore.Utils;
 using UnityEngine;
@@ -16,6 +15,125 @@ using UScenes = UnityEngine.SceneManagement;
 using Satchel.BetterMenus;
 
 namespace GraphicOptions;
+
+public class KeyBinds : PlayerActionSet
+{
+    public PlayerAction CameraBloomEnabledAction;
+    public PlayerAction CameraBlurEnabledAction;
+    public PlayerAction CameraDynamicResolutionAllowedAction;
+    public PlayerAction CameraFilmGrainEnabledAction;
+    public PlayerAction CameraHdrEnabledAction;
+    public PlayerAction CameraMsaaAllowedAction;
+    public PlayerAction CameraUseOcclusionCullingAction;
+    public PlayerAction CameraUsePhysicalPropertiesAction;
+    public PlayerAction QualityAnisotropicFilteringAction;
+    public PlayerAction QualityAntiAliasingAction;
+    public PlayerAction QualityAsyncUploadPersistentBufferAction;
+    public PlayerAction QualityBillboardsFaceCameraPositionAction;
+    public PlayerAction QualityRealtimeReflectionProbesAction;
+    public PlayerAction QualityShadowmaskModeAction;
+    public PlayerAction QualityShadowProjectionAction;
+    public PlayerAction QualityShadowResolutionAction;
+    public PlayerAction QualityShadowsAction;
+    public PlayerAction QualitySkinWeightsAction;
+    public PlayerAction QualitySoftParticlesAction;
+    public PlayerAction QualitySoftVegetationAction;
+    public PlayerAction QualityStreamingMipmapsActiveAction;
+    public PlayerAction QualityStreamingMipmapsAddAllCamerasAction;
+    public PlayerAction QualityVSyncCountAction;
+
+    public KeyBinds()
+    {
+        CameraBloomEnabledAction = CreatePlayerAction("CameraBloomEnabled");
+        CameraBlurEnabledAction = CreatePlayerAction("CameraBlurEnabled");
+        CameraDynamicResolutionAllowedAction = CreatePlayerAction("CameraDynamicResolutionAllowed");
+        CameraFilmGrainEnabledAction = CreatePlayerAction("CameraFilmGrainEnabled");
+        CameraHdrEnabledAction = CreatePlayerAction("CameraHdrEnabled");
+        CameraMsaaAllowedAction = CreatePlayerAction("CameraMsaaAllowed");
+        CameraUseOcclusionCullingAction = CreatePlayerAction("CameraUseOcclusionCulling");
+        CameraUsePhysicalPropertiesAction = CreatePlayerAction("CameraUsePhysicalProperties");
+        QualityAnisotropicFilteringAction = CreatePlayerAction("QualityAnisotropicFiltering");
+        QualityAntiAliasingAction = CreatePlayerAction("QualityAntiAliasing");
+        QualityAsyncUploadPersistentBufferAction = CreatePlayerAction("QualityAsyncUploadPersistentBuffer");
+        QualityBillboardsFaceCameraPositionAction = CreatePlayerAction("QualityBillboardsFaceCameraPosition");
+        QualityRealtimeReflectionProbesAction = CreatePlayerAction("QualityRealtimeReflectionProbes");
+        QualityShadowmaskModeAction = CreatePlayerAction("QualityShadowmaskMode");
+        QualityShadowProjectionAction = CreatePlayerAction("QualityShadowProjection");
+        QualityShadowResolutionAction = CreatePlayerAction("QualityShadowResolution");
+        QualityShadowsAction = CreatePlayerAction("QualityShadows");
+        QualitySkinWeightsAction = CreatePlayerAction("QualitySkinWeights");
+        QualitySoftParticlesAction = CreatePlayerAction("QualitySoftParticles");
+        QualitySoftVegetationAction = CreatePlayerAction("QualitySoftVegetation");
+        QualityStreamingMipmapsActiveAction = CreatePlayerAction("QualityStreamingMipmapsActive");
+        QualityStreamingMipmapsAddAllCamerasAction = CreatePlayerAction("QualityStreamingMipmapsAddAllCameras");
+        QualityVSyncCountAction = CreatePlayerAction("QualityVSyncCount");
+        DefaultBinds();
+    }
+
+    private void DefaultBinds()
+    {
+        //Action.AddDefaultBinding(Key.Backspace);
+    }
+}
+public class ButtonBinds : PlayerActionSet
+{
+    public PlayerAction CameraBloomEnabledAction;
+    public PlayerAction CameraBlurEnabledAction;
+    public PlayerAction CameraDynamicResolutionAllowedAction;
+    public PlayerAction CameraFilmGrainEnabledAction;
+    public PlayerAction CameraHdrEnabledAction;
+    public PlayerAction CameraMsaaAllowedAction;
+    public PlayerAction CameraUseOcclusionCullingAction;
+    public PlayerAction CameraUsePhysicalPropertiesAction;
+    public PlayerAction QualityAnisotropicFilteringAction;
+    public PlayerAction QualityAntiAliasingAction;
+    public PlayerAction QualityAsyncUploadPersistentBufferAction;
+    public PlayerAction QualityBillboardsFaceCameraPositionAction;
+    public PlayerAction QualityRealtimeReflectionProbesAction;
+    public PlayerAction QualityShadowmaskModeAction;
+    public PlayerAction QualityShadowProjectionAction;
+    public PlayerAction QualityShadowResolutionAction;
+    public PlayerAction QualityShadowsAction;
+    public PlayerAction QualitySkinWeightsAction;
+    public PlayerAction QualitySoftParticlesAction;
+    public PlayerAction QualitySoftVegetationAction;
+    public PlayerAction QualityStreamingMipmapsActiveAction;
+    public PlayerAction QualityStreamingMipmapsAddAllCamerasAction;
+    public PlayerAction QualityVSyncCountAction;
+
+    public ButtonBinds()
+    {
+        CameraBloomEnabledAction = CreatePlayerAction("CameraBloomEnabled");
+        CameraBlurEnabledAction = CreatePlayerAction("CameraBlurEnabled");
+        CameraDynamicResolutionAllowedAction = CreatePlayerAction("CameraDynamicResolutionAllowed");
+        CameraFilmGrainEnabledAction = CreatePlayerAction("CameraFilmGrainEnabled");
+        CameraHdrEnabledAction = CreatePlayerAction("CameraHdrEnabled");
+        CameraMsaaAllowedAction = CreatePlayerAction("CameraMsaaAllowed");
+        CameraUseOcclusionCullingAction = CreatePlayerAction("CameraUseOcclusionCulling");
+        CameraUsePhysicalPropertiesAction = CreatePlayerAction("CameraUsePhysicalProperties");
+        QualityAnisotropicFilteringAction = CreatePlayerAction("QualityAnisotropicFiltering");
+        QualityAntiAliasingAction = CreatePlayerAction("QualityAntiAliasing");
+        QualityAsyncUploadPersistentBufferAction = CreatePlayerAction("QualityAsyncUploadPersistentBuffer");
+        QualityBillboardsFaceCameraPositionAction = CreatePlayerAction("QualityBillboardsFaceCameraPosition");
+        QualityRealtimeReflectionProbesAction = CreatePlayerAction("QualityRealtimeReflectionProbes");
+        QualityShadowmaskModeAction = CreatePlayerAction("QualityShadowmaskMode");
+        QualityShadowProjectionAction = CreatePlayerAction("QualityShadowProjection");
+        QualityShadowResolutionAction = CreatePlayerAction("QualityShadowResolution");
+        QualityShadowsAction = CreatePlayerAction("QualityShadows");
+        QualitySkinWeightsAction = CreatePlayerAction("QualitySkinWeights");
+        QualitySoftParticlesAction = CreatePlayerAction("QualitySoftParticles");
+        QualitySoftVegetationAction = CreatePlayerAction("QualitySoftVegetation");
+        QualityStreamingMipmapsActiveAction = CreatePlayerAction("QualityStreamingMipmapsActive");
+        QualityStreamingMipmapsAddAllCamerasAction = CreatePlayerAction("QualityStreamingMipmapsAddAllCameras");
+        QualityVSyncCountAction = CreatePlayerAction("QualityVSyncCount");
+        DefaultBinds();
+    }
+
+    private void DefaultBinds()
+    {
+        //Action.AddDefaultBinding(InputControlType.Action2);
+    }
+}
 
 public class GraphicOptionsSettings
 {
@@ -67,6 +185,16 @@ public class GraphicOptionsSettings
     public int QualityVSyncCount = 1;
 
     #endregion
+
+    #region Keybinds
+    
+    [JsonConverter(typeof(PlayerActionSetConverter))]
+    public KeyBinds Keybinds = new KeyBinds();
+
+    [JsonConverter(typeof(PlayerActionSetConverter))]
+    public ButtonBinds ButtonBinds = new ButtonBinds();
+
+    #endregion
 }
 
 internal struct OptionStruct
@@ -92,7 +220,7 @@ public class GraphicOptions : GlobalSettingsMod<GraphicOptionsSettings>, ICustom
         return Assembly.GetExecutingAssembly().GetName().Version.ToString();
     }
 
-    public GraphicOptions() : base("Graphic Options")
+    public GraphicOptions() : base("Graphic")
     {
         SetCallbacks();
     }
@@ -110,6 +238,57 @@ public class GraphicOptions : GlobalSettingsMod<GraphicOptionsSettings>, ICustom
     private void SetCallbacks()
     {
         UScenes.SceneManager.activeSceneChanged += (_, toScene) => { SetBlur(toScene); };
+        ModHooks.HeroUpdateHook += OnModHooksHeroUpdateHook;
+    }
+
+    private void OnModHooksHeroUpdateHook()
+    {
+        if (GlobalSettings.Keybinds.CameraBloomEnabledAction.WasPressed || GlobalSettings.ButtonBinds.CameraBloomEnabledAction.WasPressed)
+            SetCameraBloomEnabled(GetCameraBloomEnabled() + 1);
+        if (GlobalSettings.Keybinds.CameraBlurEnabledAction.WasPressed || GlobalSettings.ButtonBinds.CameraBlurEnabledAction.WasPressed)
+            SetCameraBlurEnabled(GetCameraBlurEnabled() + 1);
+        if (GlobalSettings.Keybinds.CameraDynamicResolutionAllowedAction.WasPressed || GlobalSettings.ButtonBinds.CameraDynamicResolutionAllowedAction.WasPressed)
+            SetCameraDynamicResolutionAllowed(GetCameraDynamicResolutionAllowed() + 1);
+        if (GlobalSettings.Keybinds.CameraFilmGrainEnabledAction.WasPressed || GlobalSettings.ButtonBinds.CameraFilmGrainEnabledAction.WasPressed)
+            SetCameraFilmGrainEnabled(GetCameraFilmGrainEnabled() + 1);
+        if (GlobalSettings.Keybinds.CameraHdrEnabledAction.WasPressed || GlobalSettings.ButtonBinds.CameraHdrEnabledAction.WasPressed)
+            SetCameraHdrEnabled(GetCameraHdrEnabled() + 1);
+        if (GlobalSettings.Keybinds.CameraMsaaAllowedAction.WasPressed || GlobalSettings.ButtonBinds.CameraMsaaAllowedAction.WasPressed)
+            SetCameraMsaaAllowed(GetCameraMsaaAllowed() + 1);
+        if (GlobalSettings.Keybinds.CameraUseOcclusionCullingAction.WasPressed || GlobalSettings.ButtonBinds.CameraUseOcclusionCullingAction.WasPressed)
+            SetCameraUseOcclusionCulling(GetCameraUseOcclusionCulling() + 1);
+        if (GlobalSettings.Keybinds.CameraUsePhysicalPropertiesAction.WasPressed || GlobalSettings.ButtonBinds.CameraUsePhysicalPropertiesAction.WasPressed)
+            SetCameraUsePhysicalProperties(GetCameraUsePhysicalProperties() + 1);
+        if (GlobalSettings.Keybinds.QualityAnisotropicFilteringAction.WasPressed || GlobalSettings.ButtonBinds.QualityAnisotropicFilteringAction.WasPressed)
+            SetQualityAnisotropicFiltering(GetQualityAnisotropicFiltering() + 1);
+        if (GlobalSettings.Keybinds.QualityAntiAliasingAction.WasPressed || GlobalSettings.ButtonBinds.QualityAntiAliasingAction.WasPressed)
+            SetQualityAntiAliasing(GetQualityAntiAliasing() + 1);
+        if (GlobalSettings.Keybinds.QualityAsyncUploadPersistentBufferAction.WasPressed || GlobalSettings.ButtonBinds.QualityAsyncUploadPersistentBufferAction.WasPressed)
+            SetQualityAsyncUploadPersistentBuffer(GetQualityAsyncUploadPersistentBuffer() + 1);
+        if (GlobalSettings.Keybinds.QualityBillboardsFaceCameraPositionAction.WasPressed || GlobalSettings.ButtonBinds.QualityBillboardsFaceCameraPositionAction.WasPressed)
+            SetQualityBillboardsFaceCameraPosition(GetQualityBillboardsFaceCameraPosition() + 1);
+        if (GlobalSettings.Keybinds.QualityRealtimeReflectionProbesAction.WasPressed || GlobalSettings.ButtonBinds.QualityRealtimeReflectionProbesAction.WasPressed)
+            SetQualityRealtimeReflectionProbes(GetQualityRealtimeReflectionProbes() + 1);
+        if (GlobalSettings.Keybinds.QualityShadowmaskModeAction.WasPressed || GlobalSettings.ButtonBinds.QualityShadowmaskModeAction.WasPressed)
+            SetQualityShadowmaskMode(GetQualityShadowmaskMode() + 1);
+        if (GlobalSettings.Keybinds.QualityShadowProjectionAction.WasPressed || GlobalSettings.ButtonBinds.QualityShadowProjectionAction.WasPressed)
+            SetQualityShadowProjection(GetQualityShadowProjection() + 1);
+        if (GlobalSettings.Keybinds.QualityShadowResolutionAction.WasPressed || GlobalSettings.ButtonBinds.QualityShadowResolutionAction.WasPressed)
+            SetQualityShadowResolution(GetQualityShadowResolution() + 1);
+        if (GlobalSettings.Keybinds.QualityShadowsAction.WasPressed || GlobalSettings.ButtonBinds.QualityShadowsAction.WasPressed)
+            SetQualityShadows(GetQualityShadows() + 1);
+        if (GlobalSettings.Keybinds.QualitySkinWeightsAction.WasPressed || GlobalSettings.ButtonBinds.QualitySkinWeightsAction.WasPressed)
+            SetQualitySkinWeights(GetQualitySkinWeights() + 1);
+        if (GlobalSettings.Keybinds.QualitySoftParticlesAction.WasPressed || GlobalSettings.ButtonBinds.QualitySoftParticlesAction.WasPressed)
+            SetQualitySoftParticles(GetQualitySoftParticles() + 1);
+        if (GlobalSettings.Keybinds.QualitySoftVegetationAction.WasPressed || GlobalSettings.ButtonBinds.QualitySoftVegetationAction.WasPressed)
+            SetQualitySoftVegetation(GetQualitySoftVegetation() + 1);
+        if (GlobalSettings.Keybinds.QualityStreamingMipmapsActiveAction.WasPressed || GlobalSettings.ButtonBinds.QualityStreamingMipmapsActiveAction.WasPressed)
+            SetQualityStreamingMipmapsActive(GetQualityStreamingMipmapsActive() + 1);
+        if (GlobalSettings.Keybinds.QualityStreamingMipmapsAddAllCamerasAction.WasPressed || GlobalSettings.ButtonBinds.QualityStreamingMipmapsAddAllCamerasAction.WasPressed)
+            SetQualityStreamingMipmapsAddAllCameras(GetQualityStreamingMipmapsAddAllCameras() + 1);
+        if (GlobalSettings.Keybinds.QualityVSyncCountAction.WasPressed || GlobalSettings.ButtonBinds.QualityVSyncCountAction.WasPressed)
+            SetQualityVSyncCount(GetQualityVSyncCount() + 1);
     }
 
     private void SetBlur(UScenes.Scene scene)
@@ -177,41 +356,49 @@ public class GraphicOptions : GlobalSettingsMod<GraphicOptionsSettings>, ICustom
                 new[] { "Off", "On" },
                 SetCameraBloomEnabled,
                 GetCameraBloomEnabled),
+            Blueprints.KeyAndButtonBind("Toggle Bloom", GlobalSettings.Keybinds.CameraBloomEnabledAction, GlobalSettings.ButtonBinds.CameraBloomEnabledAction),
             new HorizontalOption("Blur",
                 "Enables or disables the blur effect of the background.",
                 new[] { "Off", "On" },
                 SetCameraBlurEnabled,
                 GetCameraBlurEnabled),
+            Blueprints.KeyAndButtonBind("Toggle Bluur", GlobalSettings.Keybinds.CameraBlurEnabledAction, GlobalSettings.ButtonBinds.CameraBlurEnabledAction),
             new HorizontalOption("Dynamic Resolution",
                 "Enables or disables dynamic resolution scaling.",
                 new[] { "Off", "On" },
                 SetCameraDynamicResolutionAllowed,
                 GetCameraDynamicResolutionAllowed),
+            Blueprints.KeyAndButtonBind("Toggle DR", GlobalSettings.Keybinds.CameraDynamicResolutionAllowedAction, GlobalSettings.ButtonBinds.CameraDynamicResolutionAllowedAction),
             new HorizontalOption("Film Grain",
                 "Enables or disables the film grain effect.",
                 new[] { "Off", "On" },
                 SetCameraFilmGrainEnabled,
                 GetCameraFilmGrainEnabled),
+            Blueprints.KeyAndButtonBind("Toggle Film Grain", GlobalSettings.Keybinds.CameraFilmGrainEnabledAction, GlobalSettings.ButtonBinds.CameraFilmGrainEnabledAction),
             new HorizontalOption("Allow HDR",
                 "Enables or disables high dynamic range rendering.",
                 new[] { "Off", "On" },
                 SetCameraHdrEnabled,
                 GetCameraHdrEnabled),
+            Blueprints.KeyAndButtonBind("Toggle HDR", GlobalSettings.Keybinds.CameraHdrEnabledAction, GlobalSettings.ButtonBinds.CameraHdrEnabledAction),
             new HorizontalOption("Allow MSAA",
                 "Enables or disables MSAA rendering.",
                 new[] { "Off", "On" },
                 SetCameraMsaaAllowed,
                 GetCameraMsaaAllowed),
+            Blueprints.KeyAndButtonBind("Toggle MSAA", GlobalSettings.Keybinds.CameraMsaaAllowedAction, GlobalSettings.ButtonBinds.CameraMsaaAllowedAction),
             new HorizontalOption("Occlusion Culling",
                 "Whether or not the Camera will use occlusion culling during rendering.",
                 new[] { "Off", "On" },
                 SetCameraUseOcclusionCulling,
                 GetCameraUseOcclusionCulling),
+            Blueprints.KeyAndButtonBind("Toggle OC", GlobalSettings.Keybinds.CameraUseOcclusionCullingAction, GlobalSettings.ButtonBinds.CameraUseOcclusionCullingAction),
             new HorizontalOption("Physical Properties",
                 "Enable to use physical camera properties to compute the field of view and the frustum.",
                 new[] { "Off", "On" },
                 SetCameraUsePhysicalProperties,
                 GetCameraUsePhysicalProperties),
+            Blueprints.KeyAndButtonBind("Toggle PP", GlobalSettings.Keybinds.CameraUsePhysicalPropertiesAction, GlobalSettings.ButtonBinds.CameraUsePhysicalPropertiesAction),
 
             new TextPanel("Quality Options"),
             new HorizontalOption("Anisotropic Filtering ",
@@ -219,11 +406,13 @@ public class GraphicOptions : GlobalSettingsMod<GraphicOptionsSettings>, ICustom
                 new[] { "Off", "On", "Force On" },
                 SetQualityAnisotropicFiltering,
                 GetQualityAnisotropicFiltering),
+            Blueprints.KeyAndButtonBind("Toggle Filtering", GlobalSettings.Keybinds.QualityAnisotropicFilteringAction, GlobalSettings.ButtonBinds.QualityAnisotropicFilteringAction),
             new HorizontalOption("Anti Aliasing ",
                 "Choose the level of Multi-Sample Anti-aliasing (MSAA) that the GPU performs.",
                 new[] { "Off", "2x MSAA", "4x MSAA", "8x MSAA" },
                 SetQualityAntiAliasing,
                 GetQualityAntiAliasing),
+            Blueprints.KeyAndButtonBind("Toggle Anti Aliasing", GlobalSettings.Keybinds.QualityAntiAliasingAction, GlobalSettings.ButtonBinds.QualityAntiAliasingAction),
             new CustomSlider("Async Upload Buffer Size",
                 (option) =>
                 {
@@ -236,6 +425,7 @@ public class GraphicOptions : GlobalSettingsMod<GraphicOptionsSettings>, ICustom
                 new[] { "Off", "On" },
                 SetQualityAsyncUploadPersistentBuffer,
                 GetQualityAsyncUploadPersistentBuffer),
+            Blueprints.KeyAndButtonBind("Toggle AUP", GlobalSettings.Keybinds.QualityAsyncUploadPersistentBufferAction, GlobalSettings.ButtonBinds.QualityAsyncUploadPersistentBufferAction),
             new CustomSlider("Async Upload Time Slice",
                 (option) =>
                 {
@@ -248,6 +438,7 @@ public class GraphicOptions : GlobalSettingsMod<GraphicOptionsSettings>, ICustom
                 new[] { "Off", "On" },
                 SetQualityBillboardsFaceCameraPosition,
                 GetQualityBillboardsFaceCameraPosition),
+            Blueprints.KeyAndButtonBind("Toggle Billboards", GlobalSettings.Keybinds.QualityBillboardsFaceCameraPositionAction, GlobalSettings.ButtonBinds.QualityBillboardsFaceCameraPositionAction),
             new CustomSlider("LOD Bias",
                 (option) =>
                 {
@@ -281,6 +472,7 @@ public class GraphicOptions : GlobalSettingsMod<GraphicOptionsSettings>, ICustom
                 new[] { "Off", "On" },
                 SetQualityRealtimeReflectionProbes,
                 GetQualityRealtimeReflectionProbes),
+            Blueprints.KeyAndButtonBind("Toggle Realtime Reflection", GlobalSettings.Keybinds.QualityRealtimeReflectionProbesAction, GlobalSettings.ButtonBinds.QualityRealtimeReflectionProbesAction),
             new CustomSlider("Resolution Scaling",
                 (option) =>
                 {
@@ -338,6 +530,7 @@ public class GraphicOptions : GlobalSettingsMod<GraphicOptionsSettings>, ICustom
                 new[] { "Normal", "Distance" },
                 SetQualityShadowmaskMode,
                 GetQualityShadowmaskMode),
+            Blueprints.KeyAndButtonBind("Toggle Shadowmask", GlobalSettings.Keybinds.QualityShadowmaskModeAction, GlobalSettings.ButtonBinds.QualityShadowmaskModeAction),
             new CustomSlider("Shadow Near Limit",
                 (option) =>
                 {
@@ -350,41 +543,49 @@ public class GraphicOptions : GlobalSettingsMod<GraphicOptionsSettings>, ICustom
                 new[] { "Close", "Stable" },
                 SetQualityShadowProjection,
                 GetQualityShadowProjection),
+            Blueprints.KeyAndButtonBind("Toggle SP", GlobalSettings.Keybinds.QualityShadowProjectionAction, GlobalSettings.ButtonBinds.QualityShadowProjectionAction),
             new HorizontalOption("Shadow Resolution",
                 "The default resolution of the shadow maps.",
                 new[] { "Low", "Medium", "High", "Very High" },
                 SetQualityShadowResolution,
                 GetQualityShadowResolution),
+            Blueprints.KeyAndButtonBind("Toggle SR", GlobalSettings.Keybinds.QualityShadowResolutionAction, GlobalSettings.ButtonBinds.QualityShadowResolutionAction),
             new HorizontalOption("Shadows",
                 "Real-time Shadows type to be used.",
                 new[] { "Off", "Hard", "All" },
                 SetQualityShadows,
                 GetQualityShadows),
+            Blueprints.KeyAndButtonBind("Toggle Shadows", GlobalSettings.Keybinds.QualityShadowsAction, GlobalSettings.ButtonBinds.QualityShadowsAction),
             new HorizontalOption("Skin Weights",
                 "The maximum number of bones per vertex that are taken into account during skinning.",
                 new[] { "One", "Two", "Four", "Unlimited" },
                 SetQualitySkinWeights,
                 GetQualitySkinWeights),
+            Blueprints.KeyAndButtonBind("Toggle Skin Weights", GlobalSettings.Keybinds.QualitySkinWeightsAction, GlobalSettings.ButtonBinds.QualitySkinWeightsAction),
             new HorizontalOption("Soft Particles",
                 "Should soft blending be used for particles?",
                 new[] { "Off", "On" },
                 SetQualitySoftParticles,
                 GetQualitySoftParticles),
+            Blueprints.KeyAndButtonBind("Toggle Soft Particles", GlobalSettings.Keybinds.QualitySoftParticlesAction, GlobalSettings.ButtonBinds.QualitySoftParticlesAction),
             new HorizontalOption("Soft Vegetation",
                 "Use a two-pass shader for the vegetation in the terrain engine.",
                 new[] { "Off", "On" },
                 SetQualitySoftVegetation,
                 GetQualitySoftVegetation),
+            Blueprints.KeyAndButtonBind("Toggle Soft Vegetation", GlobalSettings.Keybinds.QualitySoftVegetationAction, GlobalSettings.ButtonBinds.QualitySoftVegetationAction),
             new HorizontalOption("Mipmaps Active",
                 "Enable automatic streaming of texture mipmap levels based on their distance from all active cameras.",
                 new[] { "Off", "On" },
                 SetQualityStreamingMipmapsActive,
                 GetQualityStreamingMipmapsActive),
+            Blueprints.KeyAndButtonBind("Toggle Mipmaps Active", GlobalSettings.Keybinds.QualityStreamingMipmapsActiveAction, GlobalSettings.ButtonBinds.QualityStreamingMipmapsActiveAction),
             new HorizontalOption("Mipmaps All Cameras",
                 "Process all enabled Cameras for texture streaming.",
                 new[] { "Off", "On" },
                 SetQualityStreamingMipmapsAddAllCameras,
                 GetQualityStreamingMipmapsAddAllCameras),
+            Blueprints.KeyAndButtonBind("Toggle MMAC", GlobalSettings.Keybinds.QualityStreamingMipmapsAddAllCamerasAction, GlobalSettings.ButtonBinds.QualityStreamingMipmapsAddAllCamerasAction),
             new CustomSlider("Mipmaps Max IO",
                 (option) =>
                 {
@@ -418,6 +619,7 @@ public class GraphicOptions : GlobalSettingsMod<GraphicOptionsSettings>, ICustom
                 new[] { "Off", "Refresh Rate", "Half Refresh Rate", "Third Refresh Rate", "Quarter Refresh Rate" },
                 SetQualityVSyncCount,
                 GetQualityVSyncCount),
+            Blueprints.KeyAndButtonBind("Toggle VSync", GlobalSettings.Keybinds.QualityVSyncCountAction, GlobalSettings.ButtonBinds.QualityVSyncCountAction),
         });
     }
 
