@@ -239,6 +239,11 @@ public class GraphicOptions : GlobalSettingsMod<GraphicOptionsSettings>, ICustom
     {
         UScenes.SceneManager.activeSceneChanged += (_, toScene) => { SetBlur(toScene); };
         ModHooks.HeroUpdateHook += OnModHooksHeroUpdateHook;
+        On.CameraController.ApplyEffectConfiguration += (orig, self, isGameplayLevel, isBloomForced) =>
+        {
+            orig(self, isGameplayLevel, isBloomForced);
+            SetCameraStuff();
+        };
     }
 
     private void OnModHooksHeroUpdateHook()
