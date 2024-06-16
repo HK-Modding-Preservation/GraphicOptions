@@ -187,7 +187,7 @@ public class GraphicOptionsSettings
     #endregion
 
     #region Keybinds
-    
+
     [JsonConverter(typeof(PlayerActionSetConverter))]
     public KeyBinds Keybinds = new KeyBinds();
 
